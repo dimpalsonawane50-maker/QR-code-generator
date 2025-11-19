@@ -1,0 +1,68 @@
+<!-- // index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lab QR Code Generator</title>
+
+  <!-- Styling -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- QRCode.js library (loaded BEFORE your script so it's available synchronously) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🔬 Lab QR Code Generator</h1>
+      <p class="subtitle">Select a lab → Generate QR → Scan to view full details</p>
+    </header>
+
+    <!-- CONTROLS: placed at top -->
+    <section class="controls">
+      <label for="labSelect" class="label">Select a lab</label>
+      <select id="labSelect" class="select">
+        <option value="">-- Choose a lab --</option>
+        <option value="lab1">Apple Lab</option>
+        <option value="lab2">Physics Lab</option>
+        <option value="lab3">chemistry Lab</option>
+        <option value="lab4">computer Lab 3&4</option>
+        <option value="lab5">computer Lab 5&6</option>
+        <option value="lab6">computer Lab 7&8</option>
+        <option value="lab7">IDAE Lab</option>
+      </select>
+
+      <div class="buttons">
+        <button id="generateBtn" class="btn primary">Generate QR Code</button>
+        <button id="downloadBtn" class="btn ghost" disabled>Download QR</button>
+      </div>
+    </section>
+
+    <!-- BOTTOM: QR and image appear here -->
+    <section class="display">
+      <div id="imagePanel" class="card image-panel" aria-live="polite">
+        <!-- image inserted by script -->
+      </div>
+
+      <div id="qrcodePanel" class="card qrcode-panel">
+        <!-- Placeholder visible until Generate clicked -->
+        <div id="qrPlaceholder" class="qr-placeholder">
+          <div class="placeholder-icon">🖼</div>
+          <div class="placeholder-text">QR will appear here when you click <strong>Generate QR Code</strong></div>
+        </div>
+
+        <!-- Actual QR container (empty until generated) -->
+        <div id="qrcode" class="qrcode" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <small>Tip: Use your phone camera to scan the QR. The phone will display the lab details encoded in the QR (text).</small>
+    </footer>
+  </div>
+
+  <!-- Your script (after qrcode.min.js) -->
+  <script src="script.js"></script>
+</body>
+</html>
